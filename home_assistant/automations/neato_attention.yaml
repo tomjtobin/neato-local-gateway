@@ -1,0 +1,57 @@
+id: neato_gateway_attention
+alias: Neato - alerts needing attention
+description: >-
+  Keep significant robot events in HA's notification inbox until dismissed.
+  This records reported events, not a claim that the fault is still active
+  or that the cleaning run was terminated. It does not send phone notifications.
+variables:
+  neato_device_id: REPLACE_WITH_HA_DEVICE_ID
+  neato_vacuum_entity: vacuum.neato_d9
+triggers:
+  - trigger: event
+    event_type: neato_gateway_event
+    event_data:
+      type: error
+      source: robots.error_codes
+conditions:
+  - condition: template
+    value_template: >-
+      {{ trigger.event.data.device_id == neato_device_id
+         and ((trigger.event.data.code == 'picked_up'
+               and states(neato_vacuum_entity) in ['cleaning', 'returning', 'paused'])
+              or (trigger.event.data.code != 'picked_up'
+                  and trigger.event.data.severity in ['error', 'critical'])) }}
+actions:
+  - variables:
+      alert_code: "{{ trigger.event.data.code }}"
+      alert_label: >-
+        {{ {'dustbin_missing': 'Dust bin missing',
+            'dustbin_full': 'Dust bin full',
+            'picked_up': 'Robot lifted',
+            'main_brush_stuck': 'Main brush stuck',
+            'main_brush_overcurrent': 'Main brush overcurrent',
+            'brush_overload': 'Brush overloaded',
+            'bumper_stuck': 'Bumper stuck',
+            'vacuum_stuck': 'Robot stuck',
+            'lw_jammed': 'Left wheel jammed',
+            'rw_jammed': 'Right wheel jammed',
+            'unable_to_return_to_base': 'Unable to return to base'
+           }.get(trigger.event.data.code, trigger.event.data.code | replace('_', ' ') | capitalize) }}
+  - action: persistent_notification.create
+    data:
+      notification_id: "neato_gateway_attention_{{ trigger.event.data.device_id }}_{{ alert_code | slugify }}"
+      title: "Neato D9: {{ alert_label }}"
+      message: >-
+        **{{ alert_label }}** was reported by the robot at
+        {{ as_local(as_datetime(trigger.event.data.observed_at)).strftime('%I:%M:%S %p') }}.
+
+        This message records the event and remains until you dismiss it, even if
+        the robot clears the alert. Check **Current alert** on the
+        [Neato device page](/config/devices/device/{{ trigger.event.data.device_id }})
+        for its present status.
+
+        {% if trigger.event.data.get('replayed', false) %}
+        Earlier recorded event, replayed to verify the notification route.
+        {% endif %}
+mode: queued
+max: 10

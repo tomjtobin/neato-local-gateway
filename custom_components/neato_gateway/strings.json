@@ -1,0 +1,32 @@
+{
+  "title": "Neato Gateway",
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Connect your Neato",
+        "description": "Enter the robot address and private pairing code from the USB installer. The Mac is not needed after setup.",
+        "data": {
+          "host": "Robot address",
+          "port": "HTTPS port",
+          "pairing_code": "USB pairing code"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Update robot pairing",
+        "data": {
+          "pairing_code": "USB pairing code"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not verify the robot connection. Check the address and USB pairing code.",
+      "invalid_auth": "The robot rejected this pairing code.",
+      "invalid_pairing": "This USB pairing code is invalid or belongs to a different robot."
+    },
+    "abort": {
+      "already_configured": "This Neato is already configured.",
+      "reauth_successful": "Pairing updated."
+    }
+  }
+}

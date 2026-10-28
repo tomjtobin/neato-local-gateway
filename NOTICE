@@ -1,0 +1,15 @@
+Neato Local Gateway
+Copyright (C) 2026 Thomas Tobin
+SPDX-License-Identifier: AGPL-3.0-only
+
+Extracted from gateway, telemetry and Home Assistant work developed alongside
+https://github.com/tomjtobin/vacuula-ios and maintained as a standalone project.
+
+This project is independent of Neato Robotics, Vorwerk, Vacuula and Home Assistant.
+No proprietary Neato firmware or Python modules are distributed. Stock services
+and installed firmware are used through observed protocol interfaces.
+
+Robot dependencies are downloaded separately with exact hashes. Their upstream
+license files are retained by the installer under /user/neato-gateway/licenses:
+zeroconf 0.38.7 (LGPL-2.1-or-later), ifaddr 0.2.0 (MIT), pathlib2 2.3.7.post1 (MIT),
+and six 1.16.0 (MIT). See the wheel-provided notices for exact terms and authors.

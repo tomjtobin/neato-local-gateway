@@ -1,0 +1,23 @@
+# Never publish robot identities, credentials, maps, backups, or telemetry.
+gateway-data/
+telemetry-data/
+receiver-data/
+firmware-backups/
+evidence/
+*.key
+*.pem
+*.crt
+*.jsonl
+*.jsonl.*
+*.db
+*.sqlite*
+*.whl
+*.zip
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+.coverage
+.pytest_cache/
+dist/
+build/

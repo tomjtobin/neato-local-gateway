@@ -1,0 +1,30 @@
+[
+  {
+    "package": "zeroconf",
+    "version": "0.38.7",
+    "filename": "zeroconf-0.38.7-py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/c2/43/140e2fefeed540a6747020c29eebcb2a770cee474026b644bd2c4156d166/zeroconf-0.38.7-py3-none-any.whl",
+    "sha256": "925168c84dbaa6f3c0d990d26c34417020276748960f462b113cfbd9bb449866"
+  },
+  {
+    "package": "ifaddr",
+    "version": "0.2.0",
+    "filename": "ifaddr-0.2.0-py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/9c/1f/19ebc343cc71a7ffa78f17018535adc5cbdd87afb31d7c34874680148b32/ifaddr-0.2.0-py3-none-any.whl",
+    "sha256": "085e0305cfe6f16ab12d72e2024030f5d52674afad6911bb1eee207177b8a748"
+  },
+  {
+    "package": "pathlib2",
+    "version": "2.3.7.post1",
+    "filename": "pathlib2-2.3.7.post1-py2.py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/09/eb/4af4bcd5b8731366b676192675221c5324394a580dfae469d498313b5c4a/pathlib2-2.3.7.post1-py2.py3-none-any.whl",
+    "sha256": "5266a0fd000452f1b3467d782f079a4343c63aaa119221fbdc4e39577489ca5b"
+  },
+  {
+    "package": "six",
+    "version": "1.16.0",
+    "filename": "six-1.16.0-py2.py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl",
+    "sha256": "8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
+  }
+]
